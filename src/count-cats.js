@@ -7,14 +7,19 @@ import { NotImplementedError } from '../extensions/index.js';
  * @return {Number} count of cats found
  *
  * @example
- * countCats([
+    countCats([
  *  [0, 1, '^^'],
  *  [0, '^^', 2],
  *  ['^^', 1, 2]
  * ]) => 3`
  *
  */
-export default function countCats(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function countCats(matrix) {
+   let count = 0;
+   matrix.forEach(element => {
+    element.forEach(x => {
+      x == '^^' ? count++ : false;
+    })
+  });
+  return count;
 }
