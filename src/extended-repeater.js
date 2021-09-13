@@ -18,8 +18,6 @@ import { NotImplementedError } from '../extensions/index.js';
 export default function repeater(str, options) {
   str = str == null ? 'null' : str;
   options.addition = options.addition == null && typeof options.addition == 'object' ? 'null' : options.addition;
-  options.separator = options.separator == undefined ? '+' : options.separator;
-  options.additionSeparator = options.additionSeparator == undefined ? '|' : options.additionSeparator;
   let arr = [str, []];
   if (options.additionRepeatTimes == undefined) {
     arr[1].push(options.addition);
@@ -28,7 +26,7 @@ export default function repeater(str, options) {
       arr[1].push(options.addition);
     }
   }
-  arr[1] = arr[1].join(options.additionSeparator);
+  arr[1] = arr[1].join(options.additionSeparator || '|');
   arr = arr.join('').split();
   
   for (let i = 1; i < options.repeatTimes; i++) {
